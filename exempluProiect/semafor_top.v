@@ -81,5 +81,44 @@ pietoni_Module #(
         .clear_pietoni(clear_pietoni)
 
     );
-
+   autoModule #(SECUNDE_VERDE_EST,DIV_FACTOR) MODUL SUD(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_sud),
+        .clear(clear_sud),
+        .done(done_sud),
+        .rosu(rosu_sud),
+        .verde(verde_sud),
+        .galben(galben_sud)
+    );
+     autoModule #(SECUNDE_VERDE_EST,DIV_FACTOR) MODUL EST(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_est),
+        .clear(clear_est),
+        .done(done_est),
+        .rosu(rosu_est),
+        .verde(verde_est),
+        .galben(galben_est)
+    );
+     autoModule #(SECUNDE_VERDE_EST,DIV_FACTOR) MODUL VEST(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_vest),
+        .clear(clear_vest),
+        .done(done_vest),
+        .rosu(rosu_vest),
+        .verde(verde_vest),
+        .galben(galben_vest)
+    );
+     autoModule #(SECUNDE_VERDE_EST,DIV_FACTOR) MODUL NORD(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_nord),
+        .clear(clear_nord),
+        .done(done_nord),
+        .rosu(rosu_nord),
+        .verde(verde_nord),
+        .galben(galben_nord)
+    );
 endmodule
