@@ -1,0 +1,53 @@
+C:/Users/Igor/Desktop/exempluProiect/divFrecv.v {1 {vlog -work work -stats=none C:/Users/Igor/Desktop/exempluProiect/divFrecv.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module divFrecv
+
+Top level modules:
+	divFrecv
+
+} {} {}} C:/Users/Igor/Desktop/exempluProiect/pietoni_Module.v {0 {vlog -work work -stats=none C:/Users/Igor/Desktop/exempluProiect/pietoni_Module.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module pietoni_Module
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/pietoni_Module.v(3): near "parameter": syntax error, unexpected parameter, expecting ')'.
+
+} {4.0 5.0} {}} C:/Users/Igor/Desktop/exempluProiect/autoModule.v {0 {vlog -work work -stats=none C:/Users/Igor/Desktop/exempluProiect/autoModule.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module autoModule
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/autoModule.v(3): near "parameter": syntax error, unexpected parameter, expecting ')'.
+
+} {4.0 5.0} {}} C:/Users/Igor/Desktop/exempluProiect/general_FSM.v {0 {vlog -work work -stats=none C:/Users/Igor/Desktop/exempluProiect/general_FSM.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module general_FSM
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(63): near "=": syntax error, unexpected '=', expecting ++ or --.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(67): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(69): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(71): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(73): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(75): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(77): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(79): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(81): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(83): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(85): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(87): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(89): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(91): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(93): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(95): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(97): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(99): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(102): near "else": syntax error, unexpected else.
+** Error: (vlog-13025) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(105): near ":": Syntax error. Statement labels are only allowed in SystemVerilog.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/general_FSM.v(141): near "divFrecv": syntax error, unexpected IDENTIFIER, expecting ';' or ','.
+
+} {4.0 25.0} {}} C:/Users/Igor/Desktop/exempluProiect/semafor_top.v {0 {vlog -work work -stats=none C:/Users/Igor/Desktop/exempluProiect/semafor_top.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module semafor_top
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/semafor_top.v(50): near "PIETONI": syntax error, unexpected IDENTIFIER, expecting '('.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/semafor_top.v(62): near "FSM": syntax error, unexpected IDENTIFIER, expecting '('.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/semafor_top.v(84): near "SUD": syntax error, unexpected IDENTIFIER, expecting '('.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/semafor_top.v(94): near "EST": syntax error, unexpected IDENTIFIER, expecting '('.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/semafor_top.v(104): near "VEST": syntax error, unexpected IDENTIFIER, expecting '('.
+** Error: (vlog-13069) C:/Users/Igor/Desktop/exempluProiect/semafor_top.v(114): near "NORD": syntax error, unexpected IDENTIFIER, expecting '('.
+
+} {4.0 10.0} {}}

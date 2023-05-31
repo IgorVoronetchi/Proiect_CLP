@@ -1,5 +1,6 @@
-module general_FSM (
-    
+module general_FSM #(
+    parameter DIV_FACTOR = 10)
+    (
     input clk,
     input rst_n,
     input service_btn,
@@ -59,48 +60,57 @@ wire pulse_1_sec;
 
 always @(*) begin
     case (stare_curenta)
-      S_IDLE :if(enable_sud)  {                stare_viitoare <= S_SUD;    
-                                               done_sud = 1;
-                                               }
+      S_IDLE :if(enable_sud)    begin             stare_viitoare <= S_SUD;    
+                                             //done_sud = 1;
+      end   
              else stare_viitoare <= S_IDLE;              
 
-      S_SUD : if(done_sud && enable_sud)       {stare_viitoare <= S_PIETONI;
-                                               done_pietoni = 1;} 
+      S_SUD : if(done_sud && enable_sud)     begin  stare_viitoare <= S_PIETONI;
+                                              // done_pietoni = 1; 
+      end
               else                             stare_viitoare <= S_SUD;
 
-      S_PIETONI : if(done_pietoni && done_sud && enable_pietoni) {stare_viitoare <= S_EST;
-                                                                 done_est = 1;}
+      S_PIETONI : if(done_pietoni && done_sud && enable_pietoni) begin stare_viitoare <= S_EST;
+                                                                 //done_est = 1;
+      end
               else                                               stare_viitoare <= S_PIETONI;
 
-      S_EST : if(done_est && enable_est)       stare_viitoare <= S_PIETONI;
-                                               done_pietoni <= 1;
+      S_EST : if(done_est && enable_est)     begin  stare_viitoare <= S_PIETONI;
+                                               //done_pietoni <= 1;
+      end
                else                            stare_viitoare <= S_EST;
 
-      S_PIETONI: if(done_pietoni && done_est && enable_pietoni)  stare_viitoare <= S_VEST;
-                                                                 done_vest = 1;
+      S_PIETONI: if(done_pietoni && done_est && enable_pietoni) begin stare_viitoare <= S_VEST;
+                                                              //   done_vest = 1;
+      end
                  else                                            stare_viitoare <= S_PIETONI;  
 
-      S_VEST : if(done_vest && enable_vest)    stare_viitoare <= S_PIETONI;
-                                               done_pietoni = 1;
+      S_VEST : if(done_vest && enable_vest) begin   stare_viitoare <= S_PIETONI;
+                                             //  done_pietoni = 1;
+      end
                 else                           stare_viitoare <= S_VEST;
 
-      S_PIETONI :if(done_pietoni && done_vest && enable_pietoni) stare_viitoare <= S_NORD;
-                                                                 done_nord = 1;
+      S_PIETONI :if(done_pietoni && done_vest && enable_pietoni) begin stare_viitoare <= S_NORD;
+                                                               //  done_nord = 1;
+      end
                 else                                             stare_viitoare <= S_PIETONI;
 
-      S_NORD :if(done_nord && enable_nord)     stare_viitoare <= S_PIETONI;
-                                               done_pietoni = 1;
+      S_NORD :if(done_nord && enable_nord)  begin   stare_viitoare <= S_PIETONI;
+                                            //   done_pietoni = 1;
+      end
                 else                           stare_viitoare <= S_NORD;
-//?????
-      S_PIETONI:if(done_pietoni && done_nord && enable_pietoni)  stare_viitoare <= S_IDLE;
-                                                                 done_pietoni = 1;
-                else if(done_pietoni && done_nord && enable_pietoni && service_btn)    stare_viitoare <= S_SERVICE;
+//?
+      S_PIETONI:if(done_pietoni && done_nord && enable_pietoni) begin stare_viitoare <= S_SERVICE;
+                                                              //   done_pietoni = 1;
+      end
+                else                                             stare_viitoare <= S_PIETONI;
 
-      S_SERVICE: if(done_pietoni && enable_service)              stare_viitoare <= S_ALL_RED;
-                                                                 //service_btn = 1;
-                                                                 done_pietoni = 1;
-                else                                             stare_viitoare <= S_SERVICE;
-                if(service_btn == 0)                             stare_viitoare <= S_IDLE;
+      S_SERVICE: if(done_pietoni && enable_service)     begin         stare_viitoare <= S_ALL_RED;
+                                                                   //   service_btn = 1;
+                                                                //  done_pietoni = 1;
+      end
+                else if(service_btn == 0)                       stare_viitoare <= S_IDLE;
+                else                                            stare_viitoare <= S_SERVICE;
 
       S_ALL_RED: if(done_pietoni && service_btn)                stare_viitoare <= S_SERVICE;
                 else                                            stare_viitoare <= S_ALL_RED;                   
@@ -118,7 +128,14 @@ end
     else if(stare_curenta == S_IDLE) cnt <= 0;
 end
 
+//
+assign done_sud = (stare_curenta == S_SUD);
+assign done_est = (stare_curenta == S_EST);
+assign done_vest = (stare_curenta == S_VEST);
+assign done_nord = (stare_curenta == S_NORD);
+assign done_pietoni = (stare_curenta == S_PIETONI);
 
+//
 assign enable_nord = (stare_curenta == S_NORD);
 assign enable_sud  = (stare_curenta == S_SUD);
 assign enable_est  = (stare_curenta == S_EST);
@@ -134,11 +151,11 @@ assign clear_pietoni = ((stare_curenta == S_PIETONI) & ~enable_pietoni) | (stare
 
 
 
-assign  enable_div_frecv = (stare_curenta == S_ALL_RED)
+assign  enable_div_frecv = (stare_curenta == S_ALL_RED);
 
 
 //Instantiere divizor frecventa
-divFrecv#(DIV_FACTOR) DIV_FRECVENTA (
+divFrecv #(DIV_FACTOR) DIV_FRECVENTA(
 .clk       (clk),
 .rst_n     (rst_n),
 .enable    (enable_div_frecv),

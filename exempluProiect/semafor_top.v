@@ -20,7 +20,7 @@ module semafor_top (
     output rosu_nord,
 
     output verde_pietoni,
-    output rosu_pietoni,
+    output rosu_pietoni
 
 );
     
@@ -47,7 +47,7 @@ pietoni_Module #(
     .SECUNDE_VERDE_INTERMITENT(SECUNDE_VERDE_INTERMITENT_PIETONI),
     .SECUNDE_VERDE(SECUNDE_VERDE_PIETONI),
     .DIV_FACTOR_SEC(DIV_FACTOR))
-    MODUL PIETONI(
+    MODUL_PIETONI(
         .clk(clk),
         .rst_n(rst_n),
         .enable(enable_pietoni),
@@ -59,7 +59,7 @@ pietoni_Module #(
     );
 
 
-    general_FSM #(DIV_FACTOR) GENERAL FSM(
+    general_FSM #(DIV_FACTOR) GENERAL_FSM(
         .clk(clk),
         .rst_n(rst_n),
         .service_btn(service_btn_debounce),
@@ -77,9 +77,48 @@ pietoni_Module #(
         .clear_est(clear_est),
         .clear_vest(clear_vest),
         .clear_nord(clear_nord),
-        .clear_sud(clear_sud),'
+        .clear_sud(clear_sud),
         .clear_pietoni(clear_pietoni)
 
     );
-
+   autoModule #(SECUNDE_VERDE_SUD,DIV_FACTOR) MODUL_SUD(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_sud),
+        .clear(clear_sud),
+        .done(done_sud),
+        .rosu(rosu_sud),
+        .verde(verde_sud),
+        .galben(galben_sud)
+    );
+     autoModule #(SECUNDE_VERDE_EST,DIV_FACTOR) MODUL_EST(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_est),
+        .clear(clear_est),
+        .done(done_est),
+        .rosu(rosu_est),
+        .verde(verde_est),
+        .galben(galben_est)
+    );
+     autoModule #(SECUNDE_VERDE_VEST,DIV_FACTOR) MODUL_VEST(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_vest),
+        .clear(clear_vest),
+        .done(done_vest),
+        .rosu(rosu_vest),
+        .verde(verde_vest),
+        .galben(galben_vest)
+    );
+     autoModule #(SECUNDE_VERDE_NORD,DIV_FACTOR) MODUL_NORD(
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable_nord),
+        .clear(clear_nord),
+        .done(done_nord),
+        .rosu(rosu_nord),
+        .verde(verde_nord),
+        .galben(galben_nord)
+    );
 endmodule

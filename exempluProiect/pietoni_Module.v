@@ -1,7 +1,7 @@
 module pietoni_Module #(
-    parameter SECUNDE_VERDE_INTERMITENT = 6 ;
-    parameter SECUNDE_VERDE = 12 ;
-    parameter DIV_FACTOR_SEC = 10;
+    parameter SECUNDE_VERDE_INTERMITENT = 6, 
+    parameter SECUNDE_VERDE = 12, 
+    parameter DIV_FACTOR_SEC = 10
 ) (
     input clk,
     input rst_n,
@@ -45,7 +45,7 @@ always @(*) begin
             else                                                       stare_viitoare <= S_IDLE; 
     S_VERDE: if(counter_verde < 12)                                    stare_viitoare <= S_VERDE;
               else                                                     stare_viitoare <= S_VERDE_INTERMITENT;
-    S_VERDE_INTERMITENT: if(counter_verde_intermitent < SECUNDE_VERDE) stare_viitoare <= S_VERDE_INTERMITENT;
+    S_VERDE_INTERMITENT: if(counter_verde_intermitent < SECUNDE_VERDE_INTERMITENT) stare_viitoare <= S_VERDE_INTERMITENT;
              else                                                      stare_viitoare <= S_DONE;
     S_DONE: if(clear)                                                  stare_viitoare <= S_IDLE;                     
     else                                                               stare_viitoare <= S_DONE;
@@ -69,7 +69,7 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 ///Modelare enable div frecv
-assign enable_div_frecv = (stare_curenta == S_GALBEN) | (stare_curenta == S_VERDE);//bug
+assign enable_div_frecv = (stare_curenta == S_VERDE_INTERMITENT) | (stare_curenta == S_VERDE);//bug
 
 // modelarea iesirii
 assign verde = (stare_curenta == S_VERDE);
@@ -79,7 +79,7 @@ assign rosu = ((stare_curenta == S_DONE) | (stare_curenta== S_IDLE));
 
 
 //Instantiere divizor frecventa
-divFrecv#(DIV_FACTOR) DIV_FRECVENTA (
+divFrecv #(DIV_FACTOR_SEC) DIV_FRECVENTA (
 .clk       (clk),
 .rst_n     (rst_n),
 .enable    (enable_div_frecv),

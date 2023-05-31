@@ -1,7 +1,7 @@
 module autoModule #(
-    parameter SECUNDE_VERDE = 10
-    parameter DIV_FACTOR = 10
-)(
+    parameter SECUNDE_VERDE = 10,
+    parameter DIV_FACTOR = 10)
+(
     input rst_n,
     input clk,
     input enable,
